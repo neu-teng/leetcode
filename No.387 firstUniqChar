@@ -1,0 +1,21 @@
+class Solution:
+    def firstUniqChar(self, s):
+        """
+        :type s: str
+        :rtype: int
+        """
+        dict1 = {}
+        n = len(s)
+        
+        for i in s:
+            if i in dict1.keys():
+                dict1[i] += 1
+            else:
+                dict1[i] =1
+        for i in range(n):
+            if dict1[s[i]] ==1:
+                return i
+        return -1
+
+
+# 超过33.89%
