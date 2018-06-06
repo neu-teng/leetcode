@@ -1,0 +1,24 @@
+class Solution:
+    def reverseString(self, s):
+        """
+        :type s: str
+        :rtype: str
+        """
+        n = len(s)
+        res = ''
+        for i in range(n-1,-1,-1):
+            a = s[i]
+            res = res+a
+        return res
+#超过 19.7%
+
+class Solution:
+    def reverseString(self, s):
+        """
+        :type s: str
+        :rtype: str
+        """
+        y = s[::-1]
+        return y
+        
+#超过98%
