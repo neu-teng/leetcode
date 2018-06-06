@@ -1,0 +1,39 @@
+class Solution:
+    def plusOne(self, digits):
+        """
+        :type digits: List[int]
+        :rtype: List[int]
+        """
+        t = digits.copy()
+        carry = 1
+        for i in range(len(t)-1,-1,-1):
+            t[i] = t[i] +carry
+            carry = 0
+            if t[i] == 10:
+                t[i] %= 10
+                carry = 1
+        if carry == 1:
+            t.insert(0,1)
+        return t
+        
+        
+#超过 38.2%
+
+class Solution:
+    def plusOne(self, digits):
+        """
+        :type digits: List[int]
+        :rtype: List[int]
+        """
+        nums = str()
+        result = []
+        
+        for i in digits:
+            nums = nums + str(i)
+        nums = int(nums)+1 
+        
+        for num in str(nums):
+            result.append(int(num))
+        
+        return result
+#超过 98.8%
