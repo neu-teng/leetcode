@@ -1,0 +1,41 @@
+class Solution:
+    def containsDuplicate(self, nums):
+        """
+        :type nums: List[int]
+        :rtype: bool
+        """
+        dict1 = {}
+        for t in nums:
+            if t in dict1.keys():
+                return True
+            else:
+                dict1[t] = 1
+        return False
+#超过29.7%
+
+
+
+class Solution:
+    def containsDuplicate(self, nums):
+        """
+        :type nums: List[int]
+        :rtype: bool
+        """
+        a = set()
+        for t in nums:
+            if t in a:
+                return True
+            a.add(t)
+        return False
+#超过 72.78%
+
+
+class Solution:
+    def containsDuplicate(self, nums):
+        """
+        :type nums: List[int]
+        :rtype: bool
+        """
+        a = set(nums)
+        return len(a) < len(nums)
+#超过98.5%
