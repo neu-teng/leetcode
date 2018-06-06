@@ -1,0 +1,15 @@
+nums = [-2,11,-4,13,-5,2]
+
+
+def maxsubseqsum(nums):
+    max_sum = 0
+    now_sum = 0
+    for t in nums:
+        now_sum = now_sum +t
+        if now_sum >max_sum:
+            max_sum = now_sum
+        if now_sum <0:
+            now_sum = 0
+    return max_sum
+    
+result: 20
