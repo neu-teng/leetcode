@@ -1,0 +1,39 @@
+class Solution:
+    def reverse(self, x):
+        """
+        :type x: int
+        :rtype: int
+        """
+        y = 0
+        if x < 0 :
+            y = -1 * int(str(-x)[::-1])
+        else :
+            y = int(str(x)[::-1])
+        if y > 2147483647 or y < -2147483648:
+            y = 0
+        return y
+#超过 87.2%
+
+
+class Solution:
+    def reverse(self, x):
+        """
+        :type x: int
+        :rtype: int
+        """
+        if x <0:
+            flag = -1 
+            x = -x
+        else:
+            flag = 1
+        y = 0
+        while x>0:
+            y = y*10
+            y = y + x%10
+            x = x//10
+        if flag == -1:
+            y = -y
+        if y > 2**31-1 or y<-2**31:
+            return 0
+        return y
+ #超过 94.8%
