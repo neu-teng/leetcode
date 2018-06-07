@@ -1,0 +1,71 @@
+max_profit 系列第一题
+思路1：转化为最大子序和问题：
+class Solution:
+    def maxProfit(self, prices):
+        """
+        :type prices: List[int]
+        :rtype: int
+        """
+        if len(prices) == 0:
+            return 0
+        
+        profit = []
+        n = len(prices)
+        for i in range(1,n):
+            profit.append(prices[i]-prices[i-1])
+        
+        max_profit = 0
+        this_profit = 0
+        for j in range(len(profit)):
+            if this_profit < 0:
+                this_profit = 0
+            this_profit += profit[j]
+            if this_profit >max_profit:
+                max_profit = this_profit 
+        return max_profit
+#超过 23.8%
+思路二 转化为找最小值，并用后须值与最小值做差
+class Solution:
+    def maxProfit(self, prices):
+        """
+        :type prices: List[int]
+        :rtype: int
+        """
+        if len(prices) == 0:
+            return 0
+        
+        min_price = prices[0]
+        max_profit = 0
+        n = len (prices)
+        
+        for i in range(n):
+            if prices[i] < min_price:
+                min_price = prices[i]
+            if prices[i] - min_price>max_profit:
+                max_profit = prices[i] - min_price
+            
+        return max_profit
+#超过95%
+
+max_profit系列第二题
+
+
+# 思路 使用贪心算法，如果利益为正，则做该笔交易
+class Solution:
+    def maxProfit(self, prices):
+        """
+        :type prices: List[int]
+        :rtype: int
+        """
+        profit_list = []
+        
+        for i in range(len(prices)-1):
+            profit_list.append(prices[i+1]-prices[i])
+        
+        max_profit = 0
+        now = 0
+        for j in range(len(profit_list)):
+            if profit_list[j]>0:
+                max_profit = max_profit + profit_list[j]
+        
+        return max_profit
