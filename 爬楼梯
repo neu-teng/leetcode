@@ -1,0 +1,14 @@
+class Solution:
+    def climbStairs(self, n):
+        """
+        :type n: int
+        :rtype: int
+        """
+        res = [1,1]
+        for i in range(2,n+1):
+            add = res[-1]+res[-2]
+            res.append(add)
+        return res[-1]
+        
+#超过97.4%
+#本质上是一个斐波那契数列 ，即下一个数是前两个数的和，由此借用列表表示，下一个数由前两个数表示，最终返回列表的最后一位即可
