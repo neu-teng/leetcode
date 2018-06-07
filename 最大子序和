@@ -1,15 +1,17 @@
-nums = [-2,11,-4,13,-5,2]
-
-
-def maxsubseqsum(nums):
-    max_sum = 0
-    now_sum = 0
-    for t in nums:
-        now_sum = now_sum +t
-        if now_sum >max_sum:
-            max_sum = now_sum
-        if now_sum <0:
-            now_sum = 0
-    return max_sum
-    
-result: 20
+class Solution:
+    def maxSubArray(self, nums):
+        """
+        :type nums: List[int]
+        :rtype: int
+        """
+        this_sum =0
+        max_sum = nums[0]
+        for i in range(len(nums)):
+            if this_sum <0 :
+                this_sum =0
+            this_sum += nums[i]
+            if this_sum > max_sum:
+                max_sum = this_sum
+        return max_sum
+        
+ #超过97.52%
