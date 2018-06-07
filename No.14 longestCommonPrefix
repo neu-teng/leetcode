@@ -1,0 +1,47 @@
+class Solution:
+    def longestCommonPrefix(self, strs):
+        """
+        :type strs: List[str]
+        :rtype: str
+        """
+        
+        solution = ''
+        
+        if len(strs)==0:
+            return solution 
+        if len(strs) == 1:
+            return strs[0]
+        
+        n = len(strs[0])
+        m = len(strs)
+        
+        for i in range(n):
+            for j in range(m):
+                if i>= len(strs[j]) or strs[0][i] != strs[j][i]:
+                
+                    return solution
+            solution = solution + strs[0][i]
+        return solution
+#超过 6.2%
+
+
+class Solution:
+    def longestCommonPrefix(self, strs):
+        """
+        :type strs: List[str]
+        :rtype: str
+        """
+        tmp = ''
+        if len(strs)==0:
+            return tmp
+    
+        for i in range(len(strs[0])):
+            for x in strs:
+                if len(x) == i:
+                    return tmp
+                if strs[0][i] != x[i]:
+                    return tmp
+            tmp += strs[0][i]
+        return tmp                         
+        
+#超过88%
