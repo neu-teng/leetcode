@@ -1,0 +1,37 @@
+class Solution:
+    def rob(self, nums):
+        """
+        :type nums: List[int]
+        :rtype: int
+        """
+        robmoney = 0
+        current = 0
+        for x in nums:
+            current ,robmoney = robmoney , max(current + x,robmoney)
+        return robmoney
+        
+#采用动态规划的思想，每次保留上一位置的利益，再采用当前利益与现抢的位置的利益，一起做比对，取其较大的一位更新
+
+class Solution:
+    def rob(self, nums):
+        """
+        :type nums: List[int]
+        :rtype: int
+        """
+        n = len(nums)
+        if n == 0:
+            return 0
+        if n == 1:
+            return nums[0]
+        if n == 2:
+            return max(nums[0],nums[1])
+        
+        profit = []
+        profit.append(nums[0])
+        profit.append(max(nums[0],nums[1]))
+        
+        for i in range(2,n):
+            profit.append(max(nums[i]+profit[i-2],profit[i-1]))
+        return profit[-1]
+        
+ #采用迭代思想，每次利用上两个位置的利益 与当前抢的钱数 跟上一位置的利益做比对，取其较大的一位
