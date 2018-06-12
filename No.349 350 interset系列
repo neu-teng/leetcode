@@ -1,0 +1,48 @@
+NO.349
+class Solution:
+    def intersection(self, nums1, nums2):
+        """
+        :type nums1: List[int]
+        :type nums2: List[int]
+        :rtype: List[int]
+        """
+        dict1 = {}
+        dict2 = {}
+        for i in nums1:
+            dict1[i] = 1 if i not in dict1 else dict1[i] +1 
+        for j in nums2:
+            dict2[j] = 1 if j not in dict2 else dict2[j] +1 
+        res = []
+        for key in dict2:
+            if key in dict1:
+                res.append(key)
+        return res
+        
+No.350
+class Solution:
+    def intersect(self, nums1, nums2):
+        """
+        :type nums1: List[int]
+        :type nums2: List[int]
+        :rtype: List[int]
+        """
+        nums1 = sorted(nums1)
+        nums2 = sorted(nums2)
+        n = len(nums1)
+        m = len(nums2)
+        i = 0
+        j = 0 
+        res = []
+        if not nums1 or not nums2 or (nums1[0]>nums2[-1] )or (nums2[0] > nums1[-1]):
+            return res
+        while i < n and j <m:
+            if nums1[i] == nums2[j]:
+                res.append(nums1[i])
+                i += 1
+                j += 1
+            elif nums1[i] < nums2[j]:
+                i +=1
+            else:
+                j +=1
+                
+        return res
