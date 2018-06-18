@@ -1,0 +1,19 @@
+class Solution:
+    def countPrimes(self, n):
+        """
+        :type n: int
+        :rtype: int
+        """
+        if n < 2 :
+            return 0
+        res = [1] *n
+        res[0] = 0
+        res[1] = 0
+        for i in range(int(n**0.5)+1):
+            if res[i] == 1:
+                for j in range(i+i,n,i):
+                    res[j] =0
+        return sum(res)
+        
+        
+ #利用质数的倍数关系 然后讲其他非质数给找出来 对列表求和即是有多少个质数了
