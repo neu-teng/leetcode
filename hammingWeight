@@ -1,0 +1,26 @@
+class Solution(object):
+    def hammingWeight(self, n):
+        """
+        :type n: int
+        :rtype: int
+        """
+        ans = 0
+        while n>0:
+            n = n&(n-1)
+            ans += 1
+        return ans
+        
+        
+#按照与位计算 与位计算会转变成 二进制 ，然后用n 与 n-1进行与位 
+
+
+class Solution(object):
+    def hammingWeight(self, n):
+        """
+        :type n: int
+        :rtype: int
+        """
+        a = bin(n)
+        return a.count('1')
+        
+ 函数直接转二进制 然后计算多少个1
