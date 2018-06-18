@@ -1,0 +1,17 @@
+class Solution:
+    def isPowerOfThree(self, n):
+        """
+        :type n: int
+        :rtype: bool
+        """
+        if n == 1:
+            return True
+        while int(n)>0:
+            if n/3 ==1:
+                return True
+            else :
+                n = n/3
+        return False
+        
+如果非3次幂， 经过多次除以3其int会等于0
+但r如果是3的次幂，经过多次除法一定会等于3，那么3/3=1
