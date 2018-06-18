@@ -1,0 +1,13 @@
+class Solution(object):
+    def missingNumber(self, nums):
+        """
+        :type nums: List[int]
+        :rtype: int
+        """
+        ary_sum = sum(nums)
+        total_sum = 0
+        for i in range(len(nums)+1):
+            total_sum += i
+        return (total_sum - ary_sum)
+        
+由等差数列做求和，然后再减掉已经知道数组的和，即是缺失的数字
