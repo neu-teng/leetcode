@@ -1,0 +1,17 @@
+class Solution:
+    def isPalindrome(self, s):
+        """
+        :type s: str
+        :rtype: bool
+        """
+        list1 = []
+        for i in s:
+            if i.isalnum():
+                list1.append(i.lower())
+        n  = len(list1)
+        if n == 0:
+            return True
+        res = []
+        for j in range(n-1,-1,-1):
+            res.append(list1[j])
+        return res == list1
