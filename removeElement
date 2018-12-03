@@ -1,0 +1,20 @@
+#采用两个变量取指引序号，nums[i]跟提供的值相等，则skip，如果不等，则初始定义的序列号等于其值并往前一位
+
+class Solution:
+    def removeElement(self, nums, val):
+        """
+        :type nums: List[int]
+        :type val: int
+        :rtype: int
+        """
+        if not nums:
+            return 0
+        j = 0
+        for i in range(len(nums)):
+            if nums[i] != val:
+                nums[j] = nums[i]
+                j += 1
+        return j
+        
+        
+  
