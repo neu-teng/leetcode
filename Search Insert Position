@@ -1,0 +1,25 @@
+二分查找
+基于列表已经排序完全，查找其中的某个值
+先设定列表的中间值，然后用target与其比较，如果大，则right = mid-1，如果小则 left = mid +1
+如果left == right 就返回序列号mid
+当数组长度变为索引时 要减1
+
+class Solution:
+    def searchInsert(self, nums, target):
+        """
+        :type nums: List[int]
+        :type target: int
+        :rtype: int
+        """
+        left = 0
+        right = len(nums)-1
+        mid = (left + right) // 2
+        while left <= right:
+            mid = (right + left) //2
+            if nums[mid] > target:
+                right = mid - 1
+            elif nums[mid] < target:
+                left = mid + 1
+            else :
+                return mid
+        return right + 1 
