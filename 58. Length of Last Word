@@ -1,0 +1,23 @@
+问题描述：
+给定一个字符串，返回最后一个单词的长度
+
+note:
+内置函数由strs.isalpha可用来判断是否为字母，由此可以区分开‘ ’和字母
+
+
+
+class Solution:
+    def lengthOfLastWord(self, s):
+        """
+        :type s: str
+        :rtype: int
+        """
+        length = 0
+        start = False
+        for i,j in enumerate(s[::-1]):
+            if j.isalpha():
+                length += 1
+                start = True
+            elif j == ' ' and start:
+                return length
+        return length 
