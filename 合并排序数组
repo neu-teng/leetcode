@@ -1,0 +1,47 @@
+通过调用二分查找函数，查找数组二每个元素的嵌入数组1的位置
+再采用list.insert方法
+进行两个排序数组的合并
+
+class Solution:
+    def insert(self,nums1,target):
+        left = 0
+        right = len(nums1)-1
+        mid = (left +right) //2 
+        while left <= right:
+            if target >= nums1[mid]:
+                left = mid+1
+                mid = (left + right) //2
+            else:
+                right = mid - 1
+                mid = (left + right)//2
+        return right + 1
+    
+    def merge(self, nums1, m, nums2, n):
+        """
+        :type nums1: List[int]
+        :type m: int
+        :type nums2: List[int]
+        :type n: int
+        :rtype: void Do not return anything, modify nums1 in-place instead.
+        """
+        nums1 = nums1[:m]
+        for i,j in enumerate(nums2):
+            index = self.insert(nums1,j)
+            nums1.insert(index,j)
+        return nums1
+        
+        
+        
+        
+nums1 = [-1,0,2,0,0,0]
+nums2 = [2,5,6]
+m = 3
+n = 3
+solution = Solution()
+nums1 = solution.merge(nums1,m,nums2,n)
+end = time.time()
+print(nums1)
+
+
+[-1, 0, 2, 2, 5, 6]
+
