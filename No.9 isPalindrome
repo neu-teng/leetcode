@@ -16,3 +16,39 @@ class Solution:
             x = x //10 
             
         return res == first
+
+
+
+解法二：
+采取新的列表空间，将对应的字符串的小写给转化为对应的列表，采用[::-1]比较是否相同
+
+
+class Solution(object):
+    def isPalindrome(self, s):
+        """
+        :type s: str
+        :rtype: bool
+        """
+        string = []
+        for i,j in enumerate(s):
+            if j.isalnum():
+                string.append(j.lower())
+        if string[::-1] == string:
+            return True
+        else:
+            return False
+            
+            
+解法二.2：
+同样是上述的思路，但是不用循环，而是采用列表的递推公式，能快速得提高速度
+
+
+class Solution(object):
+    def isPalindrome(self, s):
+        """
+        :type s: str
+        :rtype: bool
+        """
+        cleanlist = [c for c in s.lower() if c.isalnum()]
+        return cleanlist == cleanlist[::-1]
+
