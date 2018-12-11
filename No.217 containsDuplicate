@@ -39,3 +39,60 @@ class Solution:
         a = set(nums)
         return len(a) < len(nums)
 #超过98.5%
+
+
+---------------这是一条分割线（二次编辑）———————————————
+
+#基于线性查找(遗憾并没有通过时间限制）
+class Solution(object):
+    def containsDuplicate(self, nums):
+        """
+        :type nums: List[int]
+        :rtype: bool
+        """
+        for i in range(len(nums)):
+            for j in range(i):
+                if nums[i] == nums[j]:
+                    return True
+        return False
+ 
+时间复杂度：O（n方平）
+空间复杂度：O（1）
+
+#排序查找：
+（基于完成题目得目的 就用列表得sorted吧）
+
+class Solution(object):
+    def containsDuplicate(self, nums):
+        """
+        :type nums: List[int]
+        :rtype: bool
+        """
+        nums = sorted(nums)
+        for i in range(len(nums)-1):
+            if nums[i] == nums[i+1]:
+                return True
+        return False
+        
+时间复杂度： O（nlogn) + O（n)
+空间复杂度： O（1）
+该解法仅击败 5%
+
+哈希算法：
+class Solution(object):
+    def containsDuplicate(self, nums):
+        """
+        :type nums: List[int]
+        :rtype: bool
+        """
+        fre_dict = {}
+        for i,j in enumerate(nums):
+            fre_dict[j] = fre_dict[j] + 1 if j in fre_dict else 1
+        for value in fre_dict.values():
+            if value > 1:
+                return True
+        return False
+        
+时间复杂度：O（n) + O(n）
+空间复杂度：O（n)
+击败 42%
