@@ -1,0 +1,20 @@
+题目描述：给定一个列表，求出列表中出现最频繁得k个数值 
+
+-------------首次编辑---------------
+利用python中collection函数中得counter,再使用most_common（非算法类,仅解决问题）
+
+from collections import Counter
+class Solution(object):
+    def topKFrequent(self, nums, k):
+        """
+        :type nums: List[int]
+        :type k: int
+        :rtype: List[int]
+        """
+        temp = Counter(nums).most_common(k)
+        ans = []
+        for i in temp:
+            ans.append(i[0])
+        return ans
+        
+仅打败 17%
