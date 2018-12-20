@@ -12,3 +12,23 @@ class Solution:
         
 #超过97.4%
 #本质上是一个斐波那契数列 ，即下一个数是前两个数的和，由此借用列表表示，下一个数由前两个数表示，最终返回列表的最后一位即可
+
+
+
+采用递归解决该问题
+
+class Solution:
+    def climbStairs(self, n):
+        """
+        :type n: int
+        :rtype: int
+        """
+        if n == 1:
+            return 1
+        elif n == 2:
+            return 2
+        else:
+            return self.climbStairs(n-1) + self.climbStairs(n-2)
+            
+#采用递归，不停调用自身函数进行求解最后的一个数值 
+#but 时间超过了限定要求
