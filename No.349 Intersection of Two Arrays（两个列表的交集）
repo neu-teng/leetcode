@@ -1,0 +1,19 @@
+#描述 
+计算两个列表的交集，每个元素必须是Unique
+结果可以任意顺序
+
+法1：
+采用内置函数：
+
+class Solution(object):
+    def intersection(self, a, b):
+        self.a = a
+        self.b = b
+        a = set(a)
+        b = set(b)
+        return list(a.intersection(b))
+        
+ #note:
+ object.intersection(ano_object) 是基于字典对象的一个方法 
+ 
+ 
