@@ -14,6 +14,29 @@ class Solution(object):
         return list(a.intersection(b))
         
  #note:
- object.intersection(ano_object) 是基于字典对象的一个方法 
+ object.intersection(ano_object) 是基于set对象的一个方法 
  
+ 法2：
+ 采用&的方法
  
+class Solution(object):
+    def intersection(self, nums1, nums2):
+        return list(set(nums1) & set(nums2))
+        
+#note:也是一个用于 set中的方法 
+
+法3：
+采用循环
+class Solution(object):
+    def intersection(self, nums1, nums2):
+        """
+        :type nums1: List[int]
+        :type nums2: List[int]
+        :rtype: List[int]
+        """
+        res = []
+        for i, j in enumerate(nums1):
+            if j in nums2:
+                res.append(j)
+        res = list(set(res))
+        return res
