@@ -45,3 +45,26 @@ print(nums1)
 
 [-1, 0, 2, 2, 5, 6]
 
+
+#时间复杂度 基于线性时间 
+
+class Solution:
+    def merge(self, nums1, m, nums2, n):
+        """
+        :type nums1: List[int]
+        :type m: int
+        :type nums2: List[int]
+        :type n: int
+        :rtype: void Do not return anything, modify nums1 in-place instead.
+        """
+        i = n + m -1
+        while m > 0 and n > 0:
+            if nums1[m-1] > nums2[n-1]:
+                nums1[i] = nums1[m-1]
+                m -= 1
+                i -= 1
+            elif nums1[m-1] <= nums2[n-1]:
+                nums1[i] = nums2[n-1]
+                n -= 1
+                i -= 1
+        nums1[:i+1] =  nums2[:n+1]
