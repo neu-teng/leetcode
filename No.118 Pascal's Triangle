@@ -1,3 +1,6 @@
+杨辉三角 
+
+#返回整个杨辉三角
 class Solution:
     def generate(self, numRows):
         """
@@ -21,3 +24,32 @@ class Solution:
         return triangle
         
  #超过79.53%
+
+
+
+#返回该序列的那一行
+
+class Solution:
+    def getRow(self, rowIndex):
+        """
+        :type rowIndex: int
+        :rtype: List[int]
+        """
+        if rowIndex == 0:
+            return [1]
+        if rowIndex == 1:
+            return [1,1]
+        tri_list = [[1],[1,1]]
+        for i in range(2,rowIndex+1):
+            temp_list = [1]
+            for j in range(1,len(tri_list[-1])):
+                temp_list.append(tri_list[-1][j] + tri_list[-1][j-1])
+            temp_list.append(1)
+            tri_list.append(temp_list)
+        return tri_list[-1]
+        
+ 空间复杂度还是在O（n^2）
+ 
+ 整体上思路是通过列表的index进行新列表的更新，每个新的列表除了第一位和最后一位
+ 其余index对应的值均是上个列表的 index-1 和 index的和 由此存储新的列表
+ 最终返回对应的列表即可 
