@@ -22,3 +22,28 @@ class Solution:
         n = len(nums)
         k = k%len(nums)
         nums[:] = nums[n-k:]+nums[:n-k]
+
+
+新解法 不采用列表切片 而是采用序列号 
+通过不停的改变序列号之间元素的交换 进行最后的更新
+但是会出现死循环的问题 采用distance解决
+
+时间复杂度 O（n) 空间复杂度 O（1）
+class Solution:
+    def rotate(self, nums, k):
+        """
+        :type nums: List[int]
+        :type k: int
+        :rtype: void Do not return anything, modify nums in-place instead.
+        """
+        n = len(nums)
+        idx = 0
+        distance = 0
+        cur = nums[0]
+        for x in range(n):
+            idx = (idx + k) % n
+            nums[idx] , cur = cur ,nums[idx]
+            distance = (distance + k ) % n
+            if distance == 0:
+                idx = (idx + 1 ) % n
+                cur = nums[idx]
