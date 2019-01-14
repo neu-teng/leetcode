@@ -1,0 +1,25 @@
+描述：给定一个数组 求出数组第三大的数值 
+
+
+思路：有几个数值设置几个负无限大的数值，每次与该数值进行比较，如果比它大就进行替换
+时间复杂度是 n * k 
+但似乎有基于堆的更快的算法 时间复杂度是n * log2k
+
+def Thridmax(nums):
+    first , second , thrid = -float('inf') , -float('inf') , -float('inf')
+    for index , num in enumerate(nums):
+        if num >= first:
+            second, thrid = first , second
+            first = num
+        elif num >= second:
+            thrid = second
+            second = num
+        elif num >= thrid:
+            thrid = num
+    return thrid if thrid is not -float('inf') else max(first , second)
+    
+    
+nums = [9,3,6,2,8,4,6,7]
+print(Thridmax(nums))
+-------------------------
+7
